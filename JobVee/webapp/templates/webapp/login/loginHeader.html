@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>JobVee Job Seeker</title>
+	<meta charset="utf-8" />
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'webapp/css/bootstrap.css' %}" type = "text/css"/>
+	<meta name="viewport" content = "width=device-width, initial-scale=1.0">
+
+	<style type = "text/css">
+	html,body{
+		height : 100%;
+	}
+	</style>
+</head>
+
+<body class="body" style="background-color:#f6f6f6">
+	<div class="container-fluid" style="min-height:95%; ">
+		<div class="row">
+			  <div class="col-sm-2">
+				  <br>
+				  <center>
+					<img src="{% static 'webapp/img/jobVeeLogo.png' %}" class="responsive-img" style='max-height:150px;' alt="logo">
+				  </center>
+			  </div>
+			  <div class="col-sm-10">
+				<br>
+				<center>
+				<h1>Faster and Easier than you think</h1>
+				</center>
+				  
+                <div class="collapse navbar-collapse" style="margin-top:5%; width:100%;">
+                    <ul class="nav nav-pills nav-stacked loginHeader">
+                        <li><a href='/loginHome'>Home</a></li>
+                        <li><a href='/loginSearchProject/'>Search Project</a></li>
+                        <li><a href='/loginSearchJob/'>Search Job</a></li>
+                        <li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">My Profile <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+							  <li><a href="/editProfile">Edit Profile</a></li>
+							  <li><a href="#">Sign Out</a></li>
+							</ul>
+						  </li>
+                    </ul>
+                </div>
+					
+			  </div>
+		</div><hr>
+
+		<div class="row">
+		  <div class="col-sm-2">
+		  <br>
+
+		  <br>
+		  </div> <!--col-sm-2-->
+		  <div class="col-sm-10">
+		  
+			<div class='container-fluid'>
+			<br><br>
+			   {% block content %}
+			   {% endblock %}	
+			</div>
+		  </div>
+		</div> 
+	</div>
+	<footer>
+		<div class="container-fluid" style='margin-left:15px'>
+			<p><a href="#" target="blank">Contact</a> | <a href="#" target="blank">LinkedIn</a> | <a href="#" target="blank">Twitter</a> | <a href="#" target="blank">Google+</a></p>
+		</div>
+	</footer>	
+</body>
+
+</html>
