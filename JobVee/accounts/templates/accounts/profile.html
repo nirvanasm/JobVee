@@ -1,0 +1,13 @@
+{% extends "webapp/header.html" %}
+
+
+{% block content %}
+pake user buat attribute username, password,dan email<br>
+selain itu pake user.profile.STR dimana STR itu selain username, password,dan email
+<h2>User Profile bruh</h2>
+<h2>{{ user.get_full_name }}</h2>
+{{ user.username }}
+{{ user.profile.city }}
+{{ user.profile.role }}
+<button><a href='/accounts/profile/edit/'> Edit Profile </a></button>
+{% endblock %}

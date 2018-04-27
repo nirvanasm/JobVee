@@ -1,0 +1,11 @@
+{% extends "webapp/header.html" %}
+
+{% block content %}
+<div style="margin-left: 120px">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type = "submit"> Submit </button>
+    </form>
+</div>
+{% endblock %}

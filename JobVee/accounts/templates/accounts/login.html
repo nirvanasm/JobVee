@@ -1,0 +1,13 @@
+{% extends "webapp/header.html" %}
+{% block content %}
+<h1>Hello</h1>
+<p>
+    You can log in here!
+</p>
+<form method="post" >
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit"> Login </button>
+</form>
+
+{% endblock %}
