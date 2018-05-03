@@ -1,10 +1,8 @@
 # JobVee
-
-Kalo mau extend header template buat user yang belom login pake header.html
-Kalo mau extend header template buat user yang udah login pake loginHeader.html
+Extend header pake variabel base_template, nanti di viewnya tambahin di parameter ketiga {'base_template': namaTemplate,}
 
 Buat ngerun local si websitenya bisa ketik
 
 python manage.py runserver
 
-di terminal atau commandline, terus tinggal buka localhost:8000
+di terminal atau commandline, terus tinggal buka localhost:8000/path
