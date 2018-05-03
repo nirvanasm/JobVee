@@ -1,0 +1,17 @@
+{% extends "webapp/header.html" %}
+{% block content %}
+<form action="submitCompany" method="post">
+    {% csrf_token %}
+    <div class = "form-group">
+        <label for="companyName">Company Name:</label>
+        <input type="text" class="form-control" id="companyName" name="companyName">
+    </div>
+    <div class = "form-group">
+        <label for="address">Role:</label>
+        <input type="text" class="form-control" id="companyAddress" name="companyAddress">
+    </div>
+    <input type="submit" class = "btn btn-default" value="Submit" />
+</form>
+
+<p> Post Data: {{ info }} </p>
+{% endblock %}
