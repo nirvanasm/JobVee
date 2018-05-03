@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.http import HttpResponseRedirect
 # Create your views here.
 
 def register(request):
@@ -27,7 +28,7 @@ def register(request):
 
 def view_profile(request):
     args = { 'user': request.user }
-    return render(request, 'accounts/profile.html', args)
+    return render(request, 'accounts/profile.html',args)
 
 
 @login_required
@@ -39,11 +40,11 @@ def edit_profile(request):
             user_form.save()
             profile_form.save()
             return redirect('/accounts/profile')
+        return HttpResponseRedirect('/')
     else:
         user_form = EditUserForm(request.POST, instance = request.user)
         profile_form = EditProfileForm(request.POST, instance = request.user.profile)
-
-    return render(request, 'accounts/edit_profile.html', {
-        'user_form': user_form,
-        'profile_form': profile_form
-    })
+        return render(request, 'accounts/edit_profile.html', {
+            'user_edit_form': user_form,
+            'profile_edit_form': profile_form
+        })

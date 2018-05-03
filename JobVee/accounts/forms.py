@@ -14,7 +14,7 @@ class UserRegistrationForm(UserCreationForm):
         fields = (
             'username',
             'password1',
-            'password2',
+            'password2',    
             'first_name',
             'last_name',
             'email',
@@ -34,7 +34,6 @@ class EditUserForm(forms.ModelForm):
         )
 
 class EditProfileForm(forms.ModelForm):
-
     class Meta:
         model = Profile
         fields = (
@@ -42,6 +41,4 @@ class EditProfileForm(forms.ModelForm):
             'city',
             'phone',
             'website',
-            'project',
-            'CV'
         )

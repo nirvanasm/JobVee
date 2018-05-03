@@ -7,7 +7,7 @@ from django.db.models import signals
 
 class Profile(models.Model):
     #user = models.OneToOneField(User, on_delete = models.CASCADE) #ada template database yg di import ke sini
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name = 'profile')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name = 'profile',primary_key=True)
     description = models.CharField(max_length = 100, default='')
     city = models.CharField(max_length = 50, default = '')
     email = models.EmailField(default='')
