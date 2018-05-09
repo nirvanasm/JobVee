@@ -7,7 +7,8 @@
 	{% load staticfiles %}
 	<link rel="stylesheet" href="{% static 'webapp/css/bootstrap.css' %}" type = "text/css"/>
 	<meta name="viewport" content = "width=device-width, initial-scale=1.0">
-
+	{% block includeData %}
+	{% endblock %}
 	<style type = "text/css">
 	html,body{
 		height : 100%;
@@ -45,9 +46,9 @@
 
 		<div class="row">
 		  <div class="col-sm-2">
-		  <br>
-
-		  <br>
+			<br><br>
+			{% block sideBar %}
+			{% endblock %}
 		  </div> <!--col-sm-2-->
 		  <div class="col-sm-10">
 		  
