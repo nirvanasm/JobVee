@@ -12,10 +12,6 @@ urlpatterns = [
     url(r'^editProfile', views.editProfile, name='editProfile'),
     url(r'^account/register', views.register, name='register'),
 
-    #Apps Page
-    url(r'^searchJob', views.searchJob, name='searchJob'),
-    url(r'^searchProject', views.searchProject, name='searchProject'),
-    
     #Insert Data Apps
     url(r'^insertCompany', views.insertCompany, name='insertCompany'),
     url(r'^insertJob', views.insertJob, name='insertJob'),

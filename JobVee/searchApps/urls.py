@@ -18,5 +18,9 @@ from django.conf.urls import url,include
 from . import views
 
 urlpatterns = [
-    
+    #Apps Page
+    url(r'^searchJobLoc', views.searchJobLoc, name='searchJobLoc'),
+    url(r'^searchJobKey', views.searchJobKey, name='searchJobKey'),
+    url(r'^searchJob', views.searchJobLoc, name='searchJob'),
+    url(r'^searchProject', views.searchProject, name='searchProject'),
 ]

@@ -29,19 +29,6 @@ def register(request):
         return HttpResponseRedirect('../home')
     return render(request, 'webapp/account/register.html')
 
-#View dealing with main apps
-def searchJob(request):
-    job = Job.objects.all()
-    counter = Job.objects.count()
-    if request.user.is_authenticated:
-        return render(request, 'webapp/searchJob.html', {'jobList' : job, 'info': counter, 'base_template': loginTemplate,})
-    return render(request, 'webapp/searchJob.html', {'jobList' : job, 'info': counter, 'base_template': startTemplate,})
-
-def searchProject(request):
-    if request.user.is_authenticated:
-        return render(request, 'webapp/searchProject.html', {'base_template': loginTemplate,})
-    return render(request, 'webapp/searchProject.html', {'base_template': startTemplate,})
-
 #View dealing with user profile
 def editProfile(request):
     if request.user.is_authenticated:
