@@ -13,7 +13,7 @@
     <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
         <ul class="nav navbar-nav">
         <li><a href="searchJobLoc">Search By Location<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-map-marker"></span></a></li>
-        <li class="active"><a href="searchJobKey">Search By Keywords<span style="font-size:16px;" class="pull-right hidden-xs showopacity 	glyphicon glyphicon-text-size"></span></a></li>
+        <li class = "active"><a href="searchJobKey">Search By Keywords<span style="font-size:16px;" class="pull-right hidden-xs showopacity 	glyphicon glyphicon-text-size"></span></a></li>
         </ul>
     </div>
     </div>
@@ -45,7 +45,7 @@
 <p>Job Count : {{info}}</p>
 
 {% for job in jobList %}
-    <div class = "container" style="border: 1px solid black;">
+    <div class = "container-fluid" style="border: 1px solid black;">
         <h4>{{ job.role }}</h4><br>
         <span style="width: 75px; display: inline-block;">Company</span>: {{ job.company_id.name }}</span><br>
         <span style="width: 75px; display: inline-block;">Address</span>: {{ job.company_id.address }}</span><br>
