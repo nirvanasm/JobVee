@@ -1,0 +1,56 @@
+{% extends base_template %}
+{% block sideBar %}
+<nav class="navbar navbar-default sidebar" role="navigation">
+    <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button>      
+    </div>
+    <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+        <li><a href="searchJobLoc">Search By Location<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-map-marker"></span></a></li>
+        <li class="active"><a href="searchJobKey">Search By Keywords<span style="font-size:16px;" class="pull-right hidden-xs showopacity 	glyphicon glyphicon-text-size"></span></a></li>
+        </ul>
+    </div>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+        <div class="col-sm-6">
+            <span>Search By Keywords</span>
+            <form action="searchJobKey" method="get">
+                <div id="imaginary_container"> 
+                    <div class="input-group stylish-input-group">
+                        {% csrf_token %}
+                        <input type="text" class="form-control"  placeholder="Search" name="keyword">
+                        <span class="input-group-addon">
+                            <button type="submit">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>  
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+	</div>
+</div>
+<h1> Job You Might Interest </h1>
+<p>Job Count : {{info}}</p>
+
+{% for job in jobList %}
+    <div class = "container" style="border: 1px solid black;">
+        <h4>{{ job.role }}</h4><br>
+        <span style="width: 75px; display: inline-block;">Company</span>: {{ job.company_id.name }}</span><br>
+        <span style="width: 75px; display: inline-block;">Address</span>: {{ job.company_id.address }}</span><br>
+        <span style="width: 75px; display: inline-block;">Salary</span>: {{ job.salary}} IDR </span>
+    </div>
+{% endfor %}
+
+{% endblock %}
