@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
-from searchApps.models import MsCompany, Job
+from searchApps.models import MsCompany, Job, Project
 
 startTemplate = 'webapp/header.html'
 loginTemplate = 'webapp/loginHeader.html'
@@ -51,9 +51,21 @@ def inputJob(request):
     companyName = request.POST.get("companyName")
     jobRole = request.POST.get("jobRole")
     jobSalary = request.POST.get("jobSalary")
-    Job.insertData(companyName, jobRole, jobSalary)
+    jobDescription = request.POST.get("jobDescription")
+    Job.insertData(companyName, jobRole, jobSalary, jobDescription)
     return render(request, 'webapp/insertJob.html', {'info': "Success Add",})
-    
+
+def inputProject(request):
+    projectTitle = request.POST.get("projectTitle")
+    projectDeadline = request.POST.get("projectDeadline")
+    projectWage = request.POST.get("projectWage")
+    projectDescription = request.POST.get("projectDescription")
+    Project.insertData(projectTitle, projectDeadline, projectWage, projectDescription)
+    return render(request, 'webapp/insertProject.html', {'info': "Success Add "+projectTitle,})
+
+def insertProject(request):
+    return render(request, 'webapp/insertProject.html')
+
 def insertCompany(request):
     return render(request, 'webapp/insertCompany.html')
 

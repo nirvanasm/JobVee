@@ -30,18 +30,30 @@ class Applicant(models.Model):
 
 class Job(models.Model):
     company_id = models.ForeignKey(MsCompany, on_delete = models.CASCADE)
+    description = models.CharField(max_length = 1000, default = 'No Description')
     role = models.CharField(max_length = 20, default = '')
     salary = models.IntegerField()
 
     def __str__(self):
         return self.company_id.name, self.role
 
-    def insertData(inpName, jobRole, jobSalary):
+    def insertData(inpName, jobRole, jobSalary, jobDescription):
         compId = MsCompany.objects.get(name = inpName)
-        temp = Job(company_id = compId, role = jobRole, salary = jobSalary)
+        temp = Job(company_id = compId, role = jobRole, salary = jobSalary, description = jobDescription)
         temp.save()
 
 
 class ApplyJob(models.Model):
     applicant_id = models.ForeignKey(Applicant, on_delete = models.CASCADE)
     job_id = models.ForeignKey(Job, on_delete = models.CASCADE)
+
+class Project(models.Model):
+    title = models.CharField(max_length = 20, default = '')
+    deadline = models.DateField()
+    wage = models.IntegerField()
+    description = models.CharField(max_length = 1000, default = '')
+
+    def insertData(projectTitle, projectDeadline, projectWage, projectDescription):
+        temp = Project(wage = projectWage, deadline = projectDeadline, description = projectDescription, title = projectTitle)
+        temp.save()
+

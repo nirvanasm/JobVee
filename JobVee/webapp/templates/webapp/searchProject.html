@@ -1,6 +1,53 @@
 {% extends base_template %}
 
+{% block includeData %}
+
+{% endblock %}
+
 {% block content %}
-<p>Willson Ganteng, Jonas Jelek yeay</p>
+<div class="container">
+	<div class="row">
+        <div class="col-sm-6">
+            <span>Search By Keyword</span>
+            <form action="searchProject" method="get">
+                <div id="imaginary_container"> 
+                    <div class="input-group stylish-input-group">
+                        {% csrf_token %}
+                        <input type="text" class="form-control"  placeholder="Search" name="keyword">
+                        <span class="input-group-addon">
+                            <button type="submit">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>  
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+	</div>
+</div>
+<br>
+<hgroup class="mb20">
+<h1> Project You Might Interest </h1>
+<p> Project Count : {{info}}</p>
+</hgroup>
+
+{% for project in projectList %}
+    <div class="search-result row container-fluid">
+        <div class="col-xs-12 col-sm-12 col-md-2">
+            <ul class="meta-search">
+                <li><i class="glyphicon glyphicon-calendar"></i> <span>{{ project.deadline }}</span></li>
+                <li><i class="glyphicon glyphicon-usd"></i> <span>{{ project.wage }}</span></li>
+            </ul>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+            <h3 style="color:#248dc1;">{{ project.title }}</h3>
+            <p>{{ project.description }}</p>						
+            <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
+             
+        </div>
+        
+        <span class="clearfix borda"></span>
+    </div>
+{% endfor %}
 
 {% endblock %}

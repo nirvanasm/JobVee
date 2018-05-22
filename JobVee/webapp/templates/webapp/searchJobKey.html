@@ -41,16 +41,28 @@
         </div>
 	</div>
 </div>
-<h1> Job You Might Interest </h1>
-<p>Job Count : {{info}}</p>
+<br>
 
+<hgroup class="mb20">
+    <h1> Job You Might Interest </h1>
+    <p> Job Count : {{info}}</p>
+</hgroup>
 {% for job in jobList %}
-    <div class = "container-fluid" style="border: 1px solid black;">
-        <h4>{{ job.role }}</h4><br>
-        <span style="width: 75px; display: inline-block;">Company</span>: {{ job.company_id.name }}</span><br>
-        <span style="width: 75px; display: inline-block;">Address</span>: {{ job.company_id.address }}</span><br>
-        <span style="width: 75px; display: inline-block;">Salary</span>: {{ job.salary}} IDR </span>
-    </div>
+    <article class="search-result row">
+        <div class="col-xs-10 col-sm-10 col-md-4" style="border-right: 1px dotted #ccc; min-height: 140px;">
+            <ul class="meta-search" style="list-style-type: none;">
+                <li><i class="glyphicon glyphicon-usd"></i> <span>{{ job.salary }}</span></li>
+                <li><i class="glyphicon glyphicon-map-marker"></i> <span>{{ job.company_id.address }}</span></li>
+                <li><i class="glyphicon glyphicon glyphicon-lock"></i> <span>{{ job.company_id.name }}</span></li>
+            </ul>
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-6 excerpet">
+            <h3 style="color:#248dc1;">{{ job.role }}</h3>
+            <p>{{ job.description }}</p>
+            <span class="plus pull-right"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
+        </div>
+        <span class="clearfix borda"></span>
+    </article>
 {% endfor %}
 
 {% endblock %}

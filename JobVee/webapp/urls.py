@@ -15,6 +15,8 @@ urlpatterns = [
     #Insert Data Apps
     url(r'^insertCompany', views.insertCompany, name='insertCompany'),
     url(r'^insertJob', views.insertJob, name='insertJob'),
+    url(r'^insertProject', views.insertProject, name='insertProject'),
     url(r'^submitCompany', views.inputTest, name='inputTest'),
     url(r'^submitJob', views.inputJob, name='inputJob'),
+    url(r'^submitProject', views.inputProject, name='inputProject'),
 ]
