@@ -2,8 +2,7 @@ import googlemaps
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.db.models import Q, F
-from .models import Job
-from .sortingCmp import sortByDist
+from .models import Job, Project
 
 
 # Create your views here.
@@ -52,6 +51,18 @@ def searchJobKey(request):
     return render(request, 'webapp/searchJobKey.html', {'jobList' : job, 'info': counter, 'base_template': startTemplate,})
 
 def searchProject(request):
+    if request.method == "GET":
+        strKeyWord = request.GET.get('keyword')
+        if strKeyWord in [None,'']:
+            project = Project.objects.all()
+            counter = Project.objects.count()    
+        else:
+            project = Project.objects.filter(Q(title__contains = strKeyWord) | Q(description__contains = strKeyWord) )
+            counter = Project.objects.filter(Q(title__contains = strKeyWord) | Q(description__contains = strKeyWord) ).count()
+    else:
+        project = Project.objects.all()
+        counter = Project.objects.count()
+    
     if request.user.is_authenticated:
-        return render(request, 'webapp/searchProject.html', {'base_template': loginTemplate,})
-    return render(request, 'webapp/searchProject.html', {'base_template': startTemplate,})
+        return render(request, 'webapp/searchProject.html', {'projectList' : project, 'info': counter, 'base_template': loginTemplate,})
+    return render(request, 'webapp/searchProject.html', {'projectList' : project, 'info': counter, 'base_template': startTemplate,})
