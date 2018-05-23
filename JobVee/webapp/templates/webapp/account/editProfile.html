@@ -1,5 +1,149 @@
-{% extends "webapp/loginHeader.html" %}
+{% extends base_template %}
+
+{% block head %}
+<title>Edit Profile</title>
+{% endblock %}
+
 {% block content %}
-<p>Willson Ganteng, Jonas Jelek yeay</p>
+<head></head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+</style>
+</head>
+
+<div class = "container">
+    <form>
+        {% csrf_token %}
+        <div class="col-md-3">
+            <div class="text-left">
+                {% load staticfiles%}
+                <div class="card">
+                  <img src="{% static 'webapp/img/unknownuser.png' %}" style="width:100%">
+                  <h1>{{ user.first_name }}  {{ user.last_name }}</h1>
+                  <h1>{{ user.username }}</h1>
+                  <p class="title">{{ user.email }}</p>
+                  <p>{{ user.profile.phone }}</p>
+                  <p>{{ user.profile.city }}</p>
+                  <div style="margin: 24px 0;">
+                    <a href="#"><i class="fa fa-dribbble"></i></a> 
+                    <a href="#"><i class="fa fa-twitter"></i></a>  
+                    <a href="#"><i class="fa fa-linkedin"></i></a>  
+                    <a href="#"><i class="fa fa-facebook"></i></a> 
+                 </div>
+                </div>
+           </div>
+         </div>
+      <!-- edit form column -->
+      <!-- KALAU MAU DI IF KALO ADA PROFILE DATA YG BELUM DIISI -->
+        <!--
+      <div class="col-md-9 personal-info">
+        <div class="alert alert-info alert-dismissable">
+          <a class="panel-close close" data-dismiss="alert">×</a> 
+          KALAU MAU DI IF KALO ADA PROFILE DATA YG BELUM DIISI 
+          <i class="fa fa-coffee"></i>
+        </div>
+        -->
+        <h3>Personal info</h3>
+        
+      <form class="form-horizontal" method="POST">
+          <div class="form-group">
+            <label class="col-lg-3 control-label">First name:</label>
+            <div class="col-lg-8">
+                {{ user_edit_form.first_name }} 
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Last name:</label>
+            <div class="col-lg-8">
+                {{ user_edit_form.last_name }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Phone:</label>
+            <div class="col-lg-8">
+                {{ profile_edit_form.phone }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Email:</label>
+            <div class="col-lg-8">
+              {{ user_edit_form.email}}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Time Zone:</label>
+            <div class="col-lg-8">
+              <div class="ui-select">
+                <select id="user_time_zone" class="form-control">
+                  <option value="Hawaii">(GMT-10:00) Hawaii</option>
+                  <option value="Alaska">(GMT-09:00) Alaska</option>
+                  <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+                  <option value="Arizona">(GMT-07:00) Arizona</option>
+                  <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
+                  <option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
+                  <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+                  <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">Password:</label>
+            <div class="col-md-8">
+              <input class="form-control" type="password" value="11111122333">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">Confirm password:</label>
+            <div class="col-md-8">
+              <input class="form-control" type="password" value="11111122333">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+              <button type="submit" class="btn btn-primary"> save </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </form>
+</div>
 
 {% endblock %}

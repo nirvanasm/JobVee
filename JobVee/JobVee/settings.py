@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'webapp.apps.WebappConfig',
     'searchApps.apps.SearchappsConfig',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +53,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'JobVee.urls'
+
+LOGIN_REDIRECT_URL = '/account/userProfile'
+LOGOUT_REDIRECT_URL = '/home'
 
 TEMPLATES = [
     {
