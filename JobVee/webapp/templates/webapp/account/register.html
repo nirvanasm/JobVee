@@ -1,5 +1,68 @@
 {% extends "webapp/header.html" %}
 {% block content %}
-<p>Willson Ganteng, Jonas Jelek yeay</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1 class="well">Registration Form</h1>
+    <div class="col-lg-12 well">
+        <div class="row">
+            <form action="" method="POST">{% csrf_token %}
+                {% if form.errors %} <p>{{ form.errors }}</p> {% endif %}
+                <div class="col-sm-12">
+                    <div class="form-group {% if form.username.errors %} error {% endif %}">
+                        <label for="username" style="White-space:pre">Username              </label>
+                        {{ form.username }}
+                        {% if form.errors %} <p>{{form.username.errors}}</p> {% endif %}
+                    </div>
+                    <div class="form-group {% if form.password.errors %} error {% endif %}">
+                        <label for="password" style="White-space:pre">Password               </label>
+                        {{ form.password1 }}
+                        {% if form.errors %} <p>{{form.password.errors}}</p> {% endif %}
+                    </div>
+                    <div class="form-group {% if form.confirm_password.errors %} error {% endif %}">
+                        <label for="confirm_password" style="White-space:pre">Confirm Password</label>
+                        {{ form.password2 }}
+                        {% if form.errors %} <p>{{form.confirm_password.errors}}</p> {% endif %}
+                    </div>
+                    <div class="form-group {% if form.first_name.errors %} error {% endif %}">
+                        <label for="First Name" style="White-space:pre">First Name              </label>
+                        {{ form.first_name }}
+                        {% if form.errors %} <p>{{form.username.errors}}</p> {% endif %}
+                    </div>
+
+                    <div class="form-group {% if form.last_name.errors %} error {% endif %}">
+                        <label for="Second Name" style="White-space:pre">Last Name              </label>
+                        {{ form.last_name }}
+                        {% if form.errors %} <p>{{form.last_name.errors}}</p> {% endif %}
+                    </div>
+
+                    <div class="form-group {% if form.phone.errors %} error {% endif %}">
+                        <label for="phone" style="White-space:pre">Phone Number      </label>
+                        {{ form.phone }}
+                        {% if form.errors %} <p>{{form.phone.errors}}</p> {% endif %}
+                    </div>
+                    <div class="form-group {% if form.mail.errors %} error {% endif %}">
+                        <label for="mail" style="White-space:pre">Email Address       </label>
+                        {{ form.email }}
+                        {% if form.errors %} <p>{{form.email.errors}}</p> {% endif %}
+                    </div>
+                    <div class="form-group {% if form.city.errors %} error {% endif %}">
+                        <label for="city" style="White-space:pre">City                          </label>{{ form.city }}
+                    </div>
+                    <input type="submit" class="btn btn-lg btn-info" value="Submit"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
 
 {% endblock %}

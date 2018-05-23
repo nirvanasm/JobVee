@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from searchApps.models import MsCompany, Job, Project
+from django.contrib.auth import authenticate, login, logout
 
 startTemplate = 'webapp/header.html'
 loginTemplate = 'webapp/loginHeader.html'
@@ -14,31 +15,29 @@ def index(request):
     return render(request, 'webapp/index.html', {'base_template': startTemplate})
 
 #View dealing with account login and registration
-def login(request):
-    if request.user.is_authenticated:
-        return HttpResponseRedirect('../home')
-    return render(request, 'webapp/account/login.html')
+
+def logout_user(request):
+    logout(request)
+    return HttpResponseRedirect('../home')
+
 
 def forgotPass(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect('../home')
     return render(request, 'webapp/account/forgot.html')
-
-def register(request):
-    if request.user.is_authenticated:
-        return HttpResponseRedirect('../home')
-    return render(request, 'webapp/account/register.html')
-
+ 
 #View dealing with user profile
 def editProfile(request):
     if request.user.is_authenticated:
-        return render(request, 'webapp/account/editProfile.html')
+        return render(request, 'webapp/account/editProfile.html', {'base_template': loginTemplate} )
     return HttpResponseRedirect('../home')
 
 def userProfile(request):
-    if request.user.is_authenticated:
-        return render(request, 'webapp/account/userProfile.html')
+    if request.user.is_authenticated: 
+        args = { 'user': request.user }
+        return render(request, 'webapp/account/userProfile.html', {'base_template': loginTemplate, 'user' : request.user })
     return HttpResponseRedirect('../home')
+
 
 #View that deal with database insert
 def inputTest(request):
